@@ -1,0 +1,52 @@
+<html>
+Your score: <div id="playerWinsDisplay">0</div>
+Computer score: <div id="computerWinsDisplay">0</div>
+<div id="buttons">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+</div>
+<script>
+    function computerPlay() {
+        var options = ["rock", "paper", "scissors"];
+        return options[Math.floor(Math.random() * 3)];
+    }
+    function playRound(playerSelection, computerSelection) {
+        if (playerWins == 5) {window.alert('You won!')}
+        if (computerWins == 5) {window.alert('You lost!')}
+        if (playerSelection == "rock") {
+            if (computerSelection == "scissors") {
+                playerWins++;
+            } else {
+                computerWins++;
+            }
+        }
+        if (playerSelection == "paper") {
+            if (computerSelection == "rock") {
+                playerWins++;
+            } else {
+                computerWins++;
+            }
+        }
+        if (playerSelection == "scissors") {
+            if (computerSelection == "paper") {
+                playerWins++;
+            } else {
+                computerWins++;
+            }
+        }
+        document.getElementById('playerWinsDisplay').textContent = playerWins;
+        document.getElementById('computerWinsDisplay').textContent = computerWins;
+    }
+    var playerWins = 0;
+    var computerWins = 0;
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            playRound(button.id, computerPlay());
+        });
+    });
+</script>
+</html>
+
+
